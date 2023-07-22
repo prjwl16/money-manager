@@ -1,6 +1,8 @@
+import { ThemeProvider } from '@/components/ui/theme-provider';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ModeToggle } from '@/components/ui/theme-toggle';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +19,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body suppressHydrationWarning={true} className={inter.className}>
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                >
+                    <nav>
+                        <ModeToggle />
+                    </nav>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );

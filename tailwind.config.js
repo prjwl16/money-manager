@@ -1,71 +1,76 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: ['class'],
     content: [
-        './pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './components/**/*.{js,ts,jsx,tsx,mdx}',
-        './app/**/*.{js,ts,jsx,tsx,mdx}',
+        './pages/**/*.{ts,tsx}',
+        './components/**/*.{ts,tsx}',
+        './app/**/*.{ts,tsx}',
+        './src/**/*.{ts,tsx}',
     ],
     theme: {
+        container: {
+            center: true,
+            padding: '2rem',
+            screens: {
+                '2xl': '1400px',
+            },
+        },
         extend: {
             colors: {
-                black: '#0B0D17',
-                lightPurpule: '#D0D6F9',
-                white: '#FFFFFF',
-                gray: '#383B4B',
+                border: 'hsl(var(--border))',
+                input: 'hsl(var(--input))',
+                ring: 'hsl(var(--ring))',
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                primary: {
+                    DEFAULT: 'hsl(var(--primary))',
+                    foreground: 'hsl(var(--primary-foreground))',
+                },
+                secondary: {
+                    DEFAULT: 'hsl(var(--secondary))',
+                    foreground: 'hsl(var(--secondary-foreground))',
+                },
+                destructive: {
+                    DEFAULT: 'hsl(var(--destructive))',
+                    foreground: 'hsl(var(--destructive-foreground))',
+                },
+                muted: {
+                    DEFAULT: 'hsl(var(--muted))',
+                    foreground: 'hsl(var(--muted-foreground))',
+                },
+                accent: {
+                    DEFAULT: 'hsl(var(--accent))',
+                    foreground: 'hsl(var(--accent-foreground))',
+                },
+                popover: {
+                    DEFAULT: 'hsl(var(--popover))',
+                    foreground: 'hsl(var(--popover-foreground))',
+                },
+                card: {
+                    DEFAULT: 'hsl(var(--card))',
+                    foreground: 'hsl(var(--card-foreground))',
+                },
             },
-            fontFamily: {
-                barlowCondensed: ['Barlow Condensed', 'sans-serif'],
-                bellefair: ['Bellefair', 'serif'],
-                barlow: ['Barlow', 'sans-serif'],
+            borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
             },
-            fontSize: {
-                h1: '150px',
-                h2: '100px',
-                h3: '56px',
-                h4: '32px',
-                h5: '28px',
-                s2: '14px',
-                nav: '16px',
-                body: '18px',
-                mobh1: '80px',
+            keyframes: {
+                'accordion-down': {
+                    from: { height: 0 },
+                    to: { height: 'var(--radix-accordion-content-height)' },
+                },
+                'accordion-up': {
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: 0 },
+                },
             },
-            screens: {
-                max: '1440px',
-                desktop: '1024px',
-                tablet: '640px',
-            },
-            spacing: {
-                xs: '4.75ch',
-                s: '2.35ch',
-                m: '3.7ch',
-                line: '100px',
-            },
-            lineHeight: {
-                line: '100px',
-                heading: '150px',
-                body: '28px',
-            },
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic':
-                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-                'hero-mobile':
-                    "url('../public/home/background-home-mobile.jpg')",
-                'destination-mobile':
-                    "url('../public/destination/background-destination-mobile.jpg')",
-            },
-            height: {
-                min: '1px',
-                mobile_moon: '170px',
-                tablet_moon: '300px',
-                desktop_moon: '445px',
-            },
-            width: {
-                mobile_moon: '170px',
-                tablet_moon: '300px',
-                desktop_moon: '445px',
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out',
             },
         },
     },
-    plugins: [],
+    plugins: [require('tailwindcss-animate')],
 };
